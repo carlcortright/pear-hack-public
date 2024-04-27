@@ -1,18 +1,13 @@
 import { useState } from 'react';
 
-const Navbar = ({ onPlayPauseToggle, onPersonalityChange }) => {
+const Navbar = ({ onPlayPauseToggle }) => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [selectedPersonality, setSelectedPersonality] = useState('Kara Swisher');
 
     const handlePlayPauseToggle = () => {
         setIsPlaying(!isPlaying);
         onPlayPauseToggle();
     };
 
-    const handlePersonalityChange = (e) => {
-        setSelectedPersonality(e.target.value);
-        onPersonalityChange(e.target.value);
-    };
 
     return (
         <nav className="flex items-center justify-between px-[200px] py-5 bg-white shadow-md">
@@ -27,18 +22,6 @@ const Navbar = ({ onPlayPauseToggle, onPersonalityChange }) => {
                 >
                     {isPlaying ? 'Pause' : 'Play'}
                 </button>
-                <div>
-                    <select
-                        id="personality"
-                        value={selectedPersonality}
-                        onChange={handlePersonalityChange}
-                        className="px-2 py-1 border border-gray-300 rounded"
-                    >
-                        <option value="Kara Swisher">Kara Swisher</option>
-                        <option value="Joe Rogan">Joe Rogan</option>
-                        <option value="Ezra Klein">Ezra Klein</option>
-                    </select>
-                </div>
             </div>
         </nav>
     );
